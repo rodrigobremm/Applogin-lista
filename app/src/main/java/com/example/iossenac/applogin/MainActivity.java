@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.iossenac.applogin.model.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,21 +33,37 @@ public class MainActivity extends AppCompatActivity {
         String textoSenha = password.getText().toString();
 
 
-        if(username.getText().toString().equals("rodrigo") &&
-                password.getText().toString().equals("senha")){
-            Toast.makeText(this,"Login efetuado com sucesso!",
+        Usuario usuario = new Usuario(textoUser,textoSenha);
+
+        if(this.getUsuariosInicial().contains(usuario)) {
+            Toast.makeText(this, "Login realizado com sucesso!",
                     Toast.LENGTH_SHORT
             ).show();
-            Log.i("TagOK","Login efetuado com sucesso!!!");
-        } else {
-            Toast.makeText(this,"Usuário ou Senha incorreto!",
-                    Toast.LENGTH_SHORT
-            ).show();
-            Log.i("TagErro","Usuário ou Senha incorreto!!!");
+
+            Log.i("TagLogin", "Login realizado com sucesso!");
         }
+        else
+        {
+            Toast.makeText(this, "Login falhou! Usuario ou senha incorretos!",
+                    Toast.LENGTH_SHORT).show();
+             Log.e("TagLogin", "Login falhou! Usuario ou senha incorretos!");
+          }
+
 
 
     }
+
+    private List<Usuario> getUsuariosInicial()
+    {
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        listaUsuarios.add(new Usuario("user1","123"));
+        listaUsuarios.add(new Usuario("user2","123"));
+        listaUsuarios.add(new Usuario("user3","123"));
+        listaUsuarios.add(new Usuario("user4","123"));
+        listaUsuarios.add(new Usuario("user5","123"));
+        return listaUsuarios;
+    }
+
 
 
 
