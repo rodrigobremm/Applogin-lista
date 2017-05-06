@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         Usuario usuario = new Usuario(textoUser,textoSenha);
 
-        if(this.getUsuariosInicial().contains(usuario)) {
+        if(this.getUsuariosInicial().contains(usuario )) {
             Toast.makeText(this, "Login realizado com sucesso!",
                     Toast.LENGTH_SHORT
             ).show();
